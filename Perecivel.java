@@ -4,7 +4,6 @@ import java.time.format.DateTimeFormatter;
 
 
 class Perecivel extends Produto{
-	private int validade;
 	private boolean refrigerado;
   private String isRef;
   private int codigo;
@@ -14,8 +13,12 @@ class Perecivel extends Produto{
 	private double valor;
   private LocalDate dtBase;
 
+  public Perecivel(){
+
+  }
+
   public Perecivel(int codigo, String nome, String fabricante, double quantidade, double valor, LocalDate validade, boolean refrigerado){
-    super(codigo, nome, fabricante, quantidade, valor);
+    super(codigo, nome, fabricante, quantidade, valor, validade);
     this.codigo = codigo;
     this.nome = nome;
     this.valor = valor;
@@ -44,4 +47,5 @@ class Perecivel extends Produto{
     return "Codigo: " + codigo + ", Nome: " + nome + ", Validade: " + dtCorreto + ", Refrigerado? " + isRef + " Quantidade: " + quantidade + " Fabricante " + fabricante + " Valor: " + valor;
 
   }
+
 }

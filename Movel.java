@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 class Movel extends Produto {
 	private String tipo_de_material;
   private int codigo;
@@ -7,8 +10,8 @@ class Movel extends Produto {
 	private double quantidade;
 	private double valor;	
 
-  public Movel(int codigo, String nome, String fabricante, double quantidade, double valor, String tipoMat){
-    super(codigo, nome, fabricante, quantidade, valor);
+  public Movel(int codigo, String nome, String fabricante, double quantidade, double valor, String tipoMat, LocalDate nd){
+    super(codigo, nome, fabricante, quantidade, valor, nd);
     this.codigo = codigo;
     this.valor = valor;
     this.nome = nome;

@@ -7,7 +7,7 @@ class GerenciarProduto {
 	private Produto val;
   private Perecivel data;
   private boolean isPossible;
-  String sla;
+  private String sla;
 
   public void adicionar(Produto p) {
     prods.add(p);
@@ -108,9 +108,10 @@ class GerenciarProduto {
   public String listarPorValidade(LocalDate minima, LocalDate maxima){
     for(int i = 0; i < prods.size(); i++){
       this.val = prods.get(i);
-      this.sla = val.toString();
-      if(sla.contains(dt) && sla.isAfter(minima) && sla.isBefore(maxima)){
-        System.out.println(val);
+      if(prods.get(i) instanceof Perecivel){
+        if(val.confereDataValidade(minima, maxima) == true){
+          System.out.println(val);
+        }
       }
     }
       return " ";

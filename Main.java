@@ -9,60 +9,15 @@ public static void main(String[] args) {
 
   GerenciarProduto prod = new GerenciarProduto();
   DateTimeFormatter dtFormatt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-  String dt8 = "27/05/2021";
-  String dt9 = "28/05/2021";
-  String dt10 = "29/05/2021";
-  String dt11 = "30/05/2021"; 
-  LocalDate datinha1; 
-  LocalDate datinha2; 
-  LocalDate datinha3; 
-  LocalDate datinha4;
-  
-  datinha1 = LocalDate.parse(dt8, dtFormatt);
-  datinha2 = LocalDate.parse(dt9, dtFormatt);
-  datinha3 = LocalDate.parse(dt10, dtFormatt);
-  datinha4 = LocalDate.parse(dt11, dtFormatt);
-
-//moveis
-  Produto m1 = new Movel(11010, "Mesa", "Leforte", 8, 300, "Madeira");
-  Produto m2 = new Movel(11011, "cadeira", "nseimarca", 15, 300, "Madeira");
-  Produto m3 = new Movel(11012, "cama", "nseimarca", 0, 300, "Madeira");
-  Produto m4 = new Movel(11013, "Mesa", "nseimarca", 13, 300, "Madeira");
-
-  //pereciveis
-  Produto p1 = new Perecivel(22020, "Comida", "Extra", 5, 20,  datinha1, true);
-  Produto p2 = new Perecivel(22021, "Comida", "Extra", 0, 20,  datinha2, true);
-  Produto p3 = new Perecivel(22022, "Comida", "Extra", 4, 20,  datinha3, true);
-  Produto p4 = new Perecivel(22023, "Comida", "Extra", 3, 20,  datinha4, true);
-
-  //eletronicos
-  Produto r1 = new Eletronico(33030, "Celular", "Samsung", 14, 1500, 5, 220, "B");
-  Produto r2 = new Eletronico(33031, "Notebook", "Dell", 18, 1500, 5, 220, "C");
-  Produto r3 = new Eletronico(33032, "Memoria Ram", "HyperX", 5, 1500, 5, 220, "D");
-  Produto r4 = new Eletronico(33033, "Teclado", "Razer", 11, 1500, 5, 220, "A");
-
-  //adicionando aos gerenciar produtos
-  prod.adicionar(m1);
-  prod.adicionar(m2);
-  prod.adicionar(m3);
-  prod.adicionar(m4);
-  prod.adicionar(p1);
-  prod.adicionar(p2);
-  prod.adicionar(p3);
-  prod.adicionar(p4);
-  prod.adicionar(r1);
-  prod.adicionar(r2);
-  prod.adicionar(r3);
-  prod.adicionar(r4);
-
-
+  String data = "31/12/9999";
+  LocalDate nd;
+  nd = LocalDate.parse(data, dtFormatt);
   String sair = "a";
   Scanner entrada = new Scanner(System.in);
   String opc;
   String fab;
   int cod;
   int qnt;
-  //DateTimeFormatter dtFormatt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
   
 
   System.out.println("------------------------------------");
@@ -125,7 +80,7 @@ public static void main(String[] args) {
         //adicionando eletornicos
         if(add.equals("0")){
           //codigo
-          System.out.println("Digite o código do eletronico: ");
+          System.out.println("\nDigite o código do eletronico: ");
           codigo = adc.nextInt();
           //nome
           System.out.println("Digite o nome do eletronico: ");
@@ -148,14 +103,14 @@ public static void main(String[] args) {
           //classificacao
           System.out.println("Digite a classificação(A, B, C, D, E) desse eletronico: ");
           classf = adc.next();
-          Produto elet = new Eletronico(codigo, nome, fabricante, quantidade, valor, voltagem, potencia, classf);
+          Produto elet = new Eletronico(codigo, nome, fabricante, quantidade, valor, voltagem, potencia, classf, nd);
           prod.adicionar(elet);
         }
 
         //adicionando moveis
         else if(add.equals("1")){
           //codigo
-          System.out.println("Digite o código do movel: ");
+          System.out.println("\nDigite o código do movel: ");
           codigo = adc.nextInt();
           //nome
           System.out.println("Digite o nome do movel: ");
@@ -172,14 +127,14 @@ public static void main(String[] args) {
           //material
           System.out.println("Digite o material desse movel: ");
           material = adc.next();
-          Produto mv = new Movel(codigo, nome, fabricante, quantidade, valor, material);
+          Produto mv = new Movel(codigo, nome, fabricante, quantidade, valor, material, nd);
           prod.adicionar(mv);
         }
 
         //adicionando pereciveis
         else if(add.equals("2")){
           //codigo
-          System.out.println("Digite o código do perecivel: ");
+          System.out.println("\nDigite o código do perecivel: ");
           codigo = adc.nextInt();
           //nome
           System.out.println("Digite o nome do perecivel: ");
@@ -188,10 +143,10 @@ public static void main(String[] args) {
           System.out.println("Digite o fabricante do perecivel: ");
           fabricante = adc.next();
           //quant
-          System.out.println("Digite a quantidade desse movel: ");
+          System.out.println("Digite a quantidade desse perecivel: ");
           quantidade = adc.nextDouble();
           //valor
-          System.out.println("Digite o valor desse movel: ");
+          System.out.println("Digite o valor desse perecivel: ");
           valor = adc.nextDouble();
           //material
           System.out.println("Digite a data de validade do perecivel (dd/mm/aaaa): ");
@@ -275,12 +230,12 @@ public static void main(String[] args) {
 
     while(!enc.equals("sair")){
       System.out.println("\n(0) Listar entre uma data minima e maxima");
-      System.out.println("(1) Listar por uma data de validade\n");
-      System.out.println("(sair) para sair");
+      System.out.println("(1) Listar por uma data de validade");
+      System.out.println("(sair) para sair\n");
       valid = val.next();
 
       if(valid.equals("0")){
-        System.out.println("Digite a data de validade minima (dd/mm/aaaa)");
+        System.out.println("\nDigite a data de validade minima (dd/mm/aaaa)");
         dt1 = val.next();
         data1 = LocalDate.parse(dt1, dtFormatt);
 
